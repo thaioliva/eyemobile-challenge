@@ -6,15 +6,20 @@ const connect = (callback) => {
 
   if (connection) return callback(null, db);
 
-  mongoClient.connect(process.env.MONGO_CONNECTION, function (err, conn) {
-    if (err) return callback(err, null);
-
-    connection = conn;
-    db = conn.db(process.env.DATABASE);
-    return callback(null, db)
+  mongoClient.connect(process.env.MONGO_CONNECTION, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
   })
-}
+    .then((conn) => {
+      connection = conn;
+      db = conn.db(process.env.DATABASE);
+      callback(null, db)
+    })
+    .catch((err) => callback(err, null));
 
+
+
+}
 const disconnect = () => {
   if (!connection) return true;
   connection.close();
