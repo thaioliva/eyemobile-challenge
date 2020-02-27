@@ -17,8 +17,6 @@ const connect = (callback) => {
     })
     .catch((err) => callback(err, null));
 
-
-
 }
 const disconnect = () => {
   if (!connection) return true;

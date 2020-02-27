@@ -9,21 +9,6 @@ const isValid = (transaction, repository) => {
   let isValid = true;
   const regexCurrency = /^(\d+(\.\d{0,2})?|\.?\d{1,2})$/g;
 
-
-  // const nsuUnique =
-  // const nsuUnique = repository.getTransactionBynsu(nsu, (err, result) => {
-  //   if (err) throw err;
-  //   // if () messages.push('NSU duplicated');
-  //   // result.resolve();
-  //   if (!!result._id) messages.push('The nsu is required');
-  //   // return { message: 'NSU duplicated' };
-  //   return messages;
-  // }, messages);
-  // nsuUnique.then(item => {
-  // })
-
-  //
-
   if (!transaction) messages.push('Invalid data');
   if (!transaction.nsu) messages.push('The "nsu" is required');
   if (!transaction.valor) messages.push('The "valor" is required');

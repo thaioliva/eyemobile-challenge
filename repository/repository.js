@@ -8,7 +8,6 @@ const getUserAuth = async (user, callback) => {
 
 const insertTransaction = async (transaction, callback) => {
   mongodb.connect((err, db) => {
-    // db.collection('transactions').createIndex(nsu, { unique: true });
     db.collection('transactions').insertOne(transaction, callback);
   })
 }

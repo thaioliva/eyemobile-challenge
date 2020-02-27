@@ -36,14 +36,13 @@ const routes = (app, repository) => {
   app.post('/transactions', auth, async (req, res, next) => {
     try {
       const transaction = req.body;
-
       const { isValid, messages } = transactionUtils.isValid(transaction, repository);
       if (isValid) {
         const objTransaction = transactionUtils.normalizeTransaction(transaction);
         repository.insertTransaction(objTransaction, (err, result) => {
           if (err) throw err;
           if (result && result.insertedCount)
-            res.status(200).send({ message: 'ok' });
+            res.status(200).send({ message: 'Transaction ok' });
         });
       } else {
         res.status(400).send({ messages });
